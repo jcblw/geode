@@ -5,6 +5,13 @@
 
 var request = require('request');
 
+/* @Constructor
+ * @Param username :String - username to geonames.org
+ * @Param local :Object - local information
+ * 		@local countryCode :String - eg. "US", "CA"
+ *		@local language :String - eg. "en", "sp"
+ */
+
 var Geode  = function(username, local){
 	var that = this;
 	that.username = (username) ? username : null;
@@ -20,11 +27,20 @@ var Geode  = function(username, local){
 		language : that.language
 	};
 
+	/* @Method error :Function - handle errors
+	 * @Param err :Object - Error object returned from request
+	 * @Param callback :Function - Function to pass error data back to
+	 */
+
 	that.error = function(err, callback){
 		if(process.env.NODE_ENV !== 'production') 
 			console.log(err);
 		callback(err, {});
 	};
+
+	/* @Method merge :Function - *utility* merging objects
+	 * @Params * :Objects - passed in via arguments array, objects to merge
+	 */
 
 	that.merge = function(){
 		if(typeof arguments[0] === 'object' && !arguments[0].length){
@@ -37,6 +53,12 @@ var Geode  = function(username, local){
 		}
 		return base;
 	};
+
+	/* @Method request :Function - sends out request to geonames server
+	 * @Param collection :String - corresponds to url endpoints in api
+	 * @Param data :Object - Payload to send in query string
+	 * @Param callback :Function - Function to pass error data back to
+	 */
 
 	that.request = function(collection, data, callback){
 		var url = that.endpoint + collection + 'JSON';
@@ -52,6 +74,10 @@ var Geode  = function(username, local){
 			}
 		});
 	};
+
+	/* All method requirement can be found here
+	 * http://www.geonames.org/export/web-services.html
+	 */
 
 	that.methods = [
 		'search',
@@ -85,6 +111,8 @@ var Geode  = function(username, local){
 		'timezone'
 	];
 
+	// Compile methods
+
 	for(var i = 0; i < that.methods.length; i += 1){
 		if(!that[that.methods[i]]){
 			(function(n){
@@ -94,6 +122,12 @@ var Geode  = function(username, local){
 			}(i));
 		}
 	};
+
+	/* Eg.
+	 * that.search = function(data, callback){
+	 *    that.request('search', data, callback);
+	 * };
+	 */
 
 };
 
