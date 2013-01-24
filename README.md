@@ -6,7 +6,7 @@ locations api in node from www.geoname.org
 
 ```shell
 npm install geode
-``
+```
 
 ## Use
 
