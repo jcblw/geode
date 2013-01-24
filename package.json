@@ -10,7 +10,9 @@
   "engines": {
     "node": "0.8"
   },
-  "dependencies": {},
+  "dependencies": {
+    "request" : "latest"
+  },
   "devDependencies": {},
   "optionalDependencies": {}
 }
