@@ -26,7 +26,7 @@ geo.search({name :'Riverside'}, function(err, results){
 
 Heres a simple Express App throwing up an api 
 
-####Demo(http://geode-demo.herokuapp.com/search.json?q=riverside&maxRows=2)
+####[Demo](http://geode-demo.herokuapp.com/search.json?q=riverside&maxRows=2)
 
 The express code is just
 
