@@ -28,7 +28,7 @@ Heres a simple Express App throwing up an api
 
 ####Demo(http://geode-demo.herokuapp.com/search.json?q=riverside&maxRows=2)
 
-The code express code is just
+The express code is just
 
 ```javascript
 var api = new Geode('username', {country: "US", language: 'en'});
