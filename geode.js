@@ -63,7 +63,6 @@ var Geode  = function(username, local){
 	that.request = function(collection, data, callback){
 		var url = that.endpoint + collection + 'JSON';
 		var payload = that.merge({},that.localize,data);
-		console.log(url);
 		request.get({
 			url : url, 
 			qs : payload
