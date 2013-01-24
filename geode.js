@@ -94,4 +94,6 @@ var Geode  = function(username, local){
 
 };
 
+module.export = Geode;
+
 
