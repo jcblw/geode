@@ -7,19 +7,29 @@ var request = require('request');
 
 /* @Constructor
  * @Param username :String - username to geonames.org
- * @Param local :Object - local information
+ * @Param local :Object - local information (OPTIONAL)
  * 		@local countryCode :String - eg. "US", "CA"
  *		@local language :String - eg. "en", "sp"
  */
 
-var Geode  = function(username, local){
+var Geode  = function(username, local) {
 	var that = this;
 	that.username = (username) ? username : null;
-	that.countryCode = (local.countryCode) ? local.countryCode : 'US';
-	that.language = (local.language) ? local.language : 'en';
-	that.endpoint = 'http://api.geonames.org/';
-	if(that.username) that.ready = true
-	else console.log('Username is required');
+	that.endpoint = 'http://api.geonames.org/';	
+	
+	/* only attempt to set countryCode and language 
+	    if local object passed */
+	if(local) {
+	    that.countryCode = (local.countryCode ? local.countryCode : 'US');
+	    that.language = (local.language ? local.language : 'en');
+	}
+	
+	if(that.username) {
+	    that.ready = true
+	}
+	else {
+	    throw new Error("username is required");
+	}
 
 	that.localize = {
 		username : that.username,
@@ -131,5 +141,3 @@ var Geode  = function(username, local){
 };
 
 module.exports = Geode;
-
-
