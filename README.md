@@ -44,3 +44,11 @@ app.get('/:collection.:format', function(req, res){
 })
 ```
 
+## Testing
+
+Make sure to install the development dependecies `npm install --dev` and then run.
+
+```
+USER=yourusername npm test
+```
+
