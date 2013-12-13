@@ -2,9 +2,12 @@
   "author": "Jacob Lowe <jacoblowe2.0@gmail.com> (jacoblowe.me)",
   "name": "geode",
   "description": "wrapper for www.geonames.org api",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "repository": {
     "url": ""
+  },
+  "scripts" : {
+    "test" : "mocha ./spec/geode_spec.js"
   },
   "main": "geode.js",
   "engines": {

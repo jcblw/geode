@@ -20,7 +20,11 @@ describe("#instantiate geode", function() {
     });
     
     it("with 'local' param should return 'US' only data", function(done) {
-        var geo = new geode("username", { language: "en", country : "US" });
+        var username = process.env.USER;
+        if ( !username ){
+            throw new Error( 'please run test with "USER={username} npm test"' );
+        }
+        var geo = new geode( username , { language: "en", country : "US" });
         
         geo.search({ q: "london", maxRows: 10 }, function(err, results) {
             should.not.exist(err);
