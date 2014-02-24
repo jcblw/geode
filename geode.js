@@ -90,6 +90,7 @@ var Geode  = function(username, local) {
 
 	that.methods = [
 		'search',
+		'get',
 		'postalCode',
 		'postalCodeLookup',
 		'findNearbyPostalCodes',
