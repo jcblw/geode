@@ -28,7 +28,7 @@ var Geode  = function(username, local) {
 	    that.ready = true
 	}
 	else {
-	    throw new Error("username is required");
+	    throw new Error('username is required');
 	}
 
 	that.localize = {
