@@ -3,9 +3,7 @@
   "name": "geode",
   "description": "wrapper for www.geonames.org api",
   "version": "0.0.5",
-  "repository": {
-    "url": ""
-  },
+  "repository": "jacoblwe20/geode",
   "scripts" : {
     "test" : "mocha ./spec/geode_spec.js"
   },
