@@ -15,20 +15,20 @@ var request = require('request');
 var Geode  = function(username, local) {
 	var that = this;
 	that.username = (username) ? username : null;
-	that.endpoint = 'http://api.geonames.org/';	
-	
-	/* only attempt to set countryCode and language 
+	that.endpoint = 'http://api.geonames.org/';
+
+	/* only attempt to set countryCode and language
 	    if local object passed */
 	if(local) {
 	    that.countryCode = (local.countryCode ? local.countryCode : 'US');
 	    that.language = (local.language ? local.language : 'en');
 	}
-	
+
 	if(that.username) {
-	    that.ready = true
+	    that.ready = true;
 	}
 	else {
-	    throw new Error("username is required");
+	    throw new Error('username is required');
 	}
 
 	that.localize = {
@@ -43,7 +43,7 @@ var Geode  = function(username, local) {
 	 */
 
 	that.error = function(err, callback){
-		if(process.env.NODE_ENV !== 'production') 
+		if(process.env.NODE_ENV !== 'production')
 			console.log(err);
 		callback(err, {});
 	};
@@ -54,7 +54,7 @@ var Geode  = function(username, local) {
 
 	that.merge = function(){
 		if(typeof arguments[0] === 'object' && !arguments[0].length){
-			var base = arguments[0]
+			var base = arguments[0];
 			for(var i = 1; i < arguments.length; i += 1){
 				for(var key in arguments[i]){
 					base[key] = arguments[i][key];
@@ -74,7 +74,7 @@ var Geode  = function(username, local) {
 		var url = that.endpoint + collection + 'JSON';
 		var payload = that.merge({},that.localize,data);
 		request.get({
-			url : url, 
+			url : url,
 			qs : payload
 		}, function(err, res, body){
 			if(err) that.error(err, callback);
@@ -90,6 +90,7 @@ var Geode  = function(username, local) {
 
 	that.methods = [
 		'search',
+		'get',
 		'postalCode',
 		'postalCodeLookup',
 		'findNearbyPostalCodes',
@@ -130,7 +131,7 @@ var Geode  = function(username, local) {
 				};
 			}(i));
 		}
-	};
+	}
 
 	/* Eg.
 	 * that.search = function(data, callback){

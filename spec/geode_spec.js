@@ -22,7 +22,6 @@ describe("#instantiate geode", function() {
     
     it("with 'local' param should return 'US' only data", function(done) {
         var username = process.env.USER;
-        console.log( username );
         if ( !username ){
             throw new Error( 'please run test with "USER={username} npm test"' );
         }
