@@ -3,13 +3,14 @@ var geode   = require("../geode"),
     _       = require("underscore");
 
 describe("#instantiate geode", function() {
+
     it("without parameters should throw exception", function() {
         (function () {
             new geode();
         }).should.throw(Error);
     });
     
-    it("without'local' param shoudl return data", function(done) {
+    it("without'local' param should return data", function(done) {
         var geo = new geode("demo");
         
         geo.search({ q: "london", maxRows: 10 }, function(err, results) {
@@ -21,6 +22,7 @@ describe("#instantiate geode", function() {
     
     it("with 'local' param should return 'US' only data", function(done) {
         var username = process.env.USER;
+        console.log( username );
         if ( !username ){
             throw new Error( 'please run test with "USER={username} npm test"' );
         }
@@ -34,4 +36,5 @@ describe("#instantiate geode", function() {
             done();
         });        
     });    
+
 });
