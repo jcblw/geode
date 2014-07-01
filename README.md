@@ -1,6 +1,6 @@
 # Geode
 
-locations api in node from www.geoname.org
+locations api in node from www.geonames.org
 
 ## Install
 
