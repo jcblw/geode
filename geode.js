@@ -65,22 +65,39 @@ Geode.prototype.merge = function(){
 	return base;
 };
 
+/* @Method errorOnResponseException :Function - returns an error upon an error code from server
+ * @Param response :Object - The response coming from geonames.org
+ */
+Geode.prototype.errorOnResponseException = function(response) {
+	if (response && response.status && response.status.value >= 10) {
+		var message = response.status.message;
+		var code = response.status.value;
+		return new Geode.GeodeError(message,code);
+	}
+}
+
+
 /* @Method request :Function - sends out request to geonames server
  * @Param collection :String - corresponds to url endpoints in api
  * @Param data :Object - Payload to send in query string
  * @Param callback :Function - Function to pass error data back to
  */
-
 Geode.prototype.request = function(collection, data, callback){
+	that = this;
+
 	var url = this.endpoint + collection + 'JSON';
 	var payload = this.merge({},this.localize,data);
 	request.get({
 		url : url,
 		qs : payload
 	}, function(err, res, body){
-		if(err) this.error(err, callback);
+		if(err) that.error(err, callback);
 		else{
-			callback(null, JSON.parse(body));
+			var parsedBody = JSON.parse(body);
+			var geodeError = that.errorOnResponseException(parsedBody);
+
+			if(geodeError) that.error(geodeError, callback);
+			else callback(null, parsedBody);
 		}
 	});
 };
@@ -141,5 +158,22 @@ for(var i = 0; i < Geode.METHODS.length; i += 1){
  * };
  */
 
+
+/*
+ *  Wraps an exception from geonames.org, see http://www.geonames.org/export/webservice-exception.html
+ *	@Constructor
+ *  @Param message :String - the error description
+ *  @Param code :Number - the error code
+*/
+function GeodeError (message,code) {
+	Error.captureStackTrace(this, this.constructor);
+  this.message = message;
+	this.code = code;
+}
+GeodeError.prototype = Object.create(Error.prototype);
+GeodeError.prototype.name = 'GeodeError'
+
+/* Accessible as class property of Geode */
+Geode.GeodeError = GeodeError;
 
 module.exports = Geode;
