@@ -165,7 +165,7 @@ var Geode  = function(username, local) {
 */
 function GeodeError (message,code) {
 	Error.captureStackTrace(this, this.constructor);
-  this.message = message;
+	this.message = message;
 	this.code = code;
 }
 GeodeError.prototype = Object.create(Error.prototype);
