@@ -39,4 +39,16 @@ describe('#instantiate geode', function() {
         });
     });
 
+    it('returns an GeodeError with bad username', function(done) {
+        var geo = new geode('some_weired_username_hopefully_never_exists');
+
+        geo.search({ q: 'london', maxRows: 10 }, function(err, results) {
+            should.exist(err);
+            err.should.have.property('name','GeodeError');
+            err.should.have.property('code',10);
+            err.should.have.property('message','user does not exist.');
+            done();
+        });
+    });
+
 });
