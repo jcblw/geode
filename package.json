@@ -9,10 +9,10 @@
   },
   "main": "geode.js",
   "engines": {
-    "node": "0.8"
+    "node": "<=0.10"
   },
   "dependencies": {
-    "request" : "latest"
+    "request" : "^2.53.0"
   },
   "devDependencies": {
       "mocha": "*",
