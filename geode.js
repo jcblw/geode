@@ -9,7 +9,7 @@ var request = require('request');
  * @Param username :String - username to geonames.org
  * @Param local :Object - local information (OPTIONAL)
  * 		@local countryCode :String - eg. "US", "CA"
- *		@local language :String - eg. "en", "sp"
+ *		@local language :String - eg. "en", "sp", "local"
  */
 
 var Geode  = function(username, local) {
@@ -20,8 +20,8 @@ var Geode  = function(username, local) {
 	/* only attempt to set countryCode and language
 	    if local object passed */
 	if(local) {
-	    that.countryCode = (local.countryCode ? local.countryCode : 'US');
-	    that.language = (local.language ? local.language : 'en');
+	    that.countryCode = local.countryCode
+	    that.language = local.language
 	}
 
 	if(that.username) {
@@ -34,7 +34,7 @@ var Geode  = function(username, local) {
 	that.localize = {
 		username : that.username,
 		country : that.countryCode,
-		language : that.language
+		lang : that.language
 	};
 
 	/* @Method error :Function - handle errors
