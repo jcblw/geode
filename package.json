@@ -4,20 +4,26 @@
   "description": "wrapper for www.geonames.org api",
   "version": "0.0.6",
   "repository": "jacoblwe20/geode",
-  "scripts" : {
-    "test" : "mocha ./spec/geode_spec.js"
+  "scripts": {
+    "test": "standard && mocha ./spec/geode_spec.js"
   },
   "main": "geode.js",
   "engines": {
     "node": "<=0.10"
   },
   "dependencies": {
-    "request" : "^2.53.0"
+    "request": "^2.53.0"
   },
   "devDependencies": {
-      "mocha": "*",
-      "should": "*",
-      "underscore": "*"
+    "mocha": "*",
+    "should": "*",
+    "standard": "^2.10.0",
+    "underscore": "*"
+  },
+  "standard": {
+    "ignore": [
+      "spec/*"
+    ]
   },
   "optionalDependencies": {}
 }
