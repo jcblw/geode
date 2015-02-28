@@ -167,7 +167,7 @@ for(var i = 0; i < Geode.METHODS.length; i += 1){
 */
 function GeodeError (message,code) {
 	Error.captureStackTrace(this, this.constructor);
-  this.message = message;
+	this.message = message;
 	this.code = code;
 }
 GeodeError.prototype = Object.create(Error.prototype);
