@@ -9,7 +9,7 @@
   },
   "main": "geode.js",
   "engines": {
-    "node": "<=0.10"
+    "node": "<=0.12"
   },
   "dependencies": {
     "request": "^2.53.0"
