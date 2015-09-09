@@ -96,7 +96,12 @@ Geode.prototype.request = function (collection, data, callback) {
       if (err) {
         self.error(err, callback)
       } else {
-        parsedBody = JSON.parse(body)
+        try {
+          parsedBody = JSON.parse(body)
+        } catch(parseErr) {
+          self.error(parseErr, callback)
+          return
+        }
         geodeError = self.errorOnResponseException(parsedBody)
 
         if (geodeError) self.error(geodeError, callback)
