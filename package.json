@@ -12,7 +12,7 @@
     "node": "<=0.12"
   },
   "dependencies": {
-    "request": "^2.53.0"
+    "request": "^2.68.0"
   },
   "devDependencies": {
     "mocha": "*",
