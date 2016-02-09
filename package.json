@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "should": "*",
+    "should": "8.2.2",
     "standard": "^6.0.2",
     "underscore": "*"
   },
