@@ -15,9 +15,9 @@
     "request": "^2.53.0"
   },
   "devDependencies": {
-    "mocha": "*",
+    "mocha": "^2.4.5",
     "should": "*",
-    "standard": "^2.10.0",
+    "standard": "^6.0.8",
     "underscore": "*"
   },
   "standard": {
