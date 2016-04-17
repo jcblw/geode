@@ -1,6 +1,6 @@
 # Geode
 
-[![Build Status](https://travis-ci.org/jcblw/geode.svg?branch=master)](https://travis-ci.org/jcblw/geode)
+[![Build Status](https://travis-ci.org/jcblw/geode.svg?branch=master)](https://travis-ci.org/jcblw/geode)[![Coverage Status](https://coveralls.io/repos/github/jcblw/geode/badge.svg?branch=master)](https://coveralls.io/github/jcblw/geode?branch=master)
 
 locations api in node from www.geonames.org
 

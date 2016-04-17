@@ -5,7 +5,8 @@
   "version": "1.0.0",
   "repository": "jacoblwe20/geode",
   "scripts": {
-    "test": "standard && mocha ./spec/geode_spec.js"
+    "test": "standard && nyc mocha ./spec/geode_spec.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "main": "geode.js",
   "engines": {
@@ -15,6 +16,8 @@
     "request": "^2.53.0"
   },
   "devDependencies": {
+    "coveralls": "^2.11.9",
+    "nyc": "^6.4.0",
     "mocha": "^2.4.5",
     "should": "*",
     "standard": "^6.0.8",
