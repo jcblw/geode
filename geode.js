@@ -14,7 +14,7 @@ var request = require('request')
  */
 
 var Geode = function (username, local) {
-  this.username = (username) ? username : null
+  this.username = username
   this.endpoint = 'http://api.geonames.org/'
 
   /* only attempt to set countryCode and language
@@ -35,7 +35,6 @@ var Geode = function (username, local) {
     country: this.countryCode,
     lang: this.language
   }
-
 }
 
 /* @Method error :Function - handle errors
@@ -93,21 +92,21 @@ Geode.prototype.request = function (collection, data, callback) {
     url: url,
     qs: payload
   }, function (err, res, body) {
-      if (err) {
-        self.error(err, callback)
-      } else {
-        try {
-          parsedBody = JSON.parse(body)
-        } catch(parseErr) {
-          self.error(parseErr, callback)
-          return
-        }
-        geodeError = self.errorOnResponseException(parsedBody)
-
-        if (geodeError) self.error(geodeError, callback)
-        else callback(null, parsedBody)
+    if (err) {
+      self.error(err, callback)
+    } else {
+      try {
+        parsedBody = JSON.parse(body)
+      } catch (parseErr) {
+        self.error(parseErr, callback)
+        return
       }
-    })
+      geodeError = self.errorOnResponseException(parsedBody)
+
+      if (geodeError) self.error(geodeError, callback)
+      else callback(null, parsedBody)
+    }
+  })
 }
 
 /* All method requirement can be found here

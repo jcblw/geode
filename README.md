@@ -1,5 +1,7 @@
 # Geode
 
+[![Build Status](https://travis-ci.org/jcblw/geode.svg?branch=master)](https://travis-ci.org/jcblw/geode)
+
 locations api in node from www.geonames.org
 
 ## Install
@@ -24,7 +26,7 @@ geo.search({name :'Riverside'}, function(err, results){
 
 ## Demo
 
-Heres a simple Express App throwing up an api 
+Heres a simple Express App throwing up an api
 
 ####[Demo](http://geode-demo.herokuapp.com/search.json?q=riverside&maxRows=2)
 
@@ -51,4 +53,3 @@ Make sure to install the development dependecies `npm install --dev` and then ru
 ```
 USER=yourusername npm test
 ```
-
