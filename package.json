@@ -16,7 +16,7 @@
     "request": "^2.53.0"
   },
   "devDependencies": {
-    "coveralls": "^2.11.9",
+    "coveralls": "^2.11.11",
     "nyc": "^7.0.0",
     "mocha": "^2.4.5",
     "should": "*",
