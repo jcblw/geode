@@ -13,7 +13,7 @@
     "node": "<=0.12"
   },
   "dependencies": {
-    "request": "^2.53.0"
+    "request": "^2.72.0"
   },
   "devDependencies": {
     "coveralls": "^2.11.9",
